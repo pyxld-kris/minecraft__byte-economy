@@ -1,0 +1,19 @@
+name: ByteEconomy
+version: ${project.version}
+main: devlaunchers.byteeconomy.ByteEconomy
+api-version: 1.16
+commands:
+  giveByte:
+    description: Gives you bytes
+    usage: /giveBytes
+    permission: byte$.giveBytes
+
+  saveInventory:
+    description: Saves a players current inventory
+    usage: /saveInventory
+    permission: byte$.saveInventory
+
+  loadInventory:
+    description: Loads a players saved inventory
+    usage: /loadInventory
+    permission: byte$.loadInventory
