@@ -1,5 +1,7 @@
 package devlaunchers.byteeconomy.dailyworlds;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -25,6 +27,7 @@ public class DailyWorldListener implements Listener {
             setPlayerHealthFull(player);
             setPlayerFoodLevelFull(player);
             insertCompassIntoPlayerInventory(player);
+            setPlayerActionBar(player);
         }
     }
 
@@ -49,5 +52,10 @@ public class DailyWorldListener implements Listener {
 
     private void insertCompassIntoPlayerInventory(Player player) {
         player.getInventory().addItem(new ItemStack(Material.COMPASS));
+    }
+
+    private void setPlayerActionBar(Player player) {
+        player.sendActionBar("STRING");
+        //player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("TESTING ACTION BAR"));
     }
 }

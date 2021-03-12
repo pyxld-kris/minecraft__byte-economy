@@ -13,19 +13,25 @@ import org.bukkit.event.Listener;
 
 import java.util.Date;
 
+// TODO: Clean up alert reminder chat code stuff - it's bad
 // TODO: Display time left in world in action bar, or use boss health boss bar - or make progress bar in action bar
+
 // TODO: Should people be able to bring entities (Pets, villagers, etc) from the daily world?
 // TODO: Daily streaks!
 
+/*
+ "this is my new favorite Science & Technology stream" - TheVibeCurator 2021
+ */
 
-// Possible daily game modes
+
+// TODO: Possible daily game modes
 // - Easter egg hunts
 // - Protecting a certain starting item while hunting for another one
 // - Trophy hunting (stats above entity head)
 // - Treasure hunt ()
 // - Huge towers you have to scale
 
-// IDEA: "Jaily Dim" chases you around and tries to jail you
+// TODO: [IDEA] "Jaily Dim" chases you around and tries to jail you
 
 public class DailyWorldManager {
 
@@ -76,6 +82,8 @@ public class DailyWorldManager {
             }, 20*intervalAmount);
         }
     }
+
+
 
     private static void initNpcInDailyWorld() {
         World dailyWorld = Bukkit.getServer().getWorld(DAILY_WORLD_NAME);
