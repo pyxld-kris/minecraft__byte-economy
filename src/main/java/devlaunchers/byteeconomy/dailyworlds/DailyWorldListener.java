@@ -1,5 +1,6 @@
 package devlaunchers.byteeconomy.dailyworlds;
 
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -7,12 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.inventory.ItemStack;
-
-
-// TODO: Clear player inventory when changing to daily world
-// TODO: Set health to full when changing to daily world
-// TODO: Set hunger to full when changing to daily world
-
 
 public class DailyWorldListener implements Listener {
 
@@ -29,6 +24,7 @@ public class DailyWorldListener implements Listener {
             clearPlayerInventory(player);
             setPlayerHealthFull(player);
             setPlayerFoodLevelFull(player);
+            insertCompassIntoPlayerInventory(player);
         }
     }
 
@@ -49,5 +45,9 @@ public class DailyWorldListener implements Listener {
     private void setPlayerFoodLevelFull(Player player) {
         System.out.println("SETTING MAX FOOD");
         player.setFoodLevel(20);
+    }
+
+    private void insertCompassIntoPlayerInventory(Player player) {
+        player.getInventory().addItem(new ItemStack(Material.COMPASS));
     }
 }

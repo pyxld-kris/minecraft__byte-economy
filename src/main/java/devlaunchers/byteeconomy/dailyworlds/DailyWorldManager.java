@@ -13,9 +13,9 @@ import org.bukkit.event.Listener;
 
 import java.util.Date;
 
-// TODO: Insert compass into player inventory when they join world
-// TODO: Daily streaks!
 // TODO: Display time left in world in action bar, or use boss health boss bar - or make progress bar in action bar
+// TODO: Should people be able to bring entities (Pets, villagers, etc) from the daily world?
+// TODO: Daily streaks!
 
 
 // Possible daily game modes

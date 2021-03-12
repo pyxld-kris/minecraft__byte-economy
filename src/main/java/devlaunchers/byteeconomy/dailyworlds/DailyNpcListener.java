@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 // TODO: Better way to identify daily NPCs
+// TODO: Maybe make items explode out of Daily Tim
 
 public class DailyNpcListener implements Listener {
     @EventHandler
