@@ -17,8 +17,12 @@ public class GiveByteCommand implements CommandExecutor {
             // Create a new ItemStack (type: diamond)
             ItemStack byteItem = ByteEconomy.getByteItem().clone();
 
+            int numBytes = 1;
+            if (args[0] != null)
+                numBytes = Integer.parseInt(args[0]);
+
             // Set the amount of the ItemStack
-            byteItem.setAmount(1);
+            byteItem.setAmount(numBytes);
 
             // Give the player our items (comma-seperated list of all ItemStack)
             player.getInventory().addItem(byteItem);

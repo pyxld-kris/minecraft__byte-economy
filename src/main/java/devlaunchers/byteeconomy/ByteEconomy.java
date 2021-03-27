@@ -1,13 +1,10 @@
 package devlaunchers.byteeconomy;
 
-import devlaunchers.byteeconomy.dailyworlds.DailyNpcListener;
-import devlaunchers.byteeconomy.dailyworlds.DailyWorldListener;
-import devlaunchers.byteeconomy.dailyworlds.DailyWorldManager;
-import devlaunchers.byteeconomy.playerdatahandler.InventoryLoadCommand;
-import devlaunchers.byteeconomy.playerdatahandler.InventorySaveCommand;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -17,7 +14,66 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// TODO: PVP challenges for bytes
+// Actions:
+//    - Interacting with others
+//       - Making friends
+//       - Competition
+//       - Starting kingdoms/clans
+//       - Business partners
+//    - Exploring/Adventuring
+//    - Mining
+//    - Crafting
+//    - Building
+//       - Things that impress others
+//       - Bases
+//       - Outposts
+//       - Pretty places
+//       - Funny/cute things
+//    - Collecting things...
+//       - RARE STUFF
+//    - Farming
+//    - Surviving
+//    - Building stories
+//    - Meeting people
+//    - Fighting monsters
+//    - Fighting other players
+//    - Selling/Buying/Trading
+//    - Pets
+//    - Maximizing efficiency
+//       - Building auto farms and automated redstone devices
+
+// Byproducts:
+//    - Currency (Byte$)
+//    -
+
+// FOCUS: Which behaviours do we want to encourage?
+//  [COMMUNITY, EXPLORATION, BUILDING, CRAFTING]
+//  - Interacting with other players
+//  -
+
+// Guillermo: Farming Crops, Mining, Killing Mobs, Enchanting, Using Workbenches like Anvils?
+
+// TODONE: Detect silk touch when dropping bytes
+// TODONE: Create general byte dropping protection scheme that can be reused - based on radius and time period?
+// TODONE: Drop byte$ from mining certain blocks (need to monitor so silk touch and farms don't break economy)
+// TODONE: Killing enemies give Byte$
+// TODONE: Make better config structure for Byte drop chances (make it so types can have separate chances of dropping, and maybe different timeout)
+// TODONE: Make it so fortune has a higher chance to drop bytes
+// TODO: Advancements gives Byte$?
+// TODO: Detect different fortune levels
+
+// TODO: Leveling up gives Byte$?
+
+// TODO: (EPIC) PVP challenges for bytes
+// TODO: (EPIC) Quests for Byte$
+// TODO: (EPIC) Custom advancement system
+// TODO: Make it so Piglins can trade Byte$ (Cant find proper event - ON HOLD)
+
+// UNSURE HOW TO IMPLEMENT
+// TODO: Player placed byte bounties - players can place bounties on other players
+// TODO: Building challenges
+// TODO: Reputation score - game gives you more rewards for being a nicer player
+// TODO: Reward players for interacting in chat?
 
 public final class ByteEconomy extends JavaPlugin {
 
@@ -33,15 +89,41 @@ public final class ByteEconomy extends JavaPlugin {
         initByteToDiamondRecipe();
 
         this.getCommand("giveByte").setExecutor(new GiveByteCommand());
-        this.getCommand("saveInventory").setExecutor(new InventorySaveCommand());
-        this.getCommand("loadInventory").setExecutor(new InventoryLoadCommand());
 
         getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
-        getServer().getPluginManager().registerEvents(new BlockBreakByteDropper(), this);
-        getServer().getPluginManager().registerEvents(new DailyWorldListener(), this);
-        getServer().getPluginManager().registerEvents(new DailyNpcListener(), this);
 
-        DailyWorldManager.init();
+        // Detect breaking blocks and maybe drop byte$
+        getServer().getPluginManager().registerEvents(new BlockBreakByteDropper(
+                new DropStrategy(
+                        new HashMap<Object, DropRule>(){{
+                                put(Material.DIAMOND_ORE, new DropRule(50, 1, 60));
+                                put(Material.EMERALD_ORE, new DropRule(100, 1, 60));
+                    }}
+                )),
+                this);
+
+        // Detect killing mobs and maybe drop byte$
+        getServer().getPluginManager().registerEvents(new MobKillByteDropper(
+                new DropStrategy(
+                        new HashMap<Object, DropRule>(){{
+                            put(EntityType.CAVE_SPIDER, new DropRule(5, 2, 60));
+                            put(EntityType.CREEPER, new DropRule(5, 2, 60));
+                            put(EntityType.DROWNED, new DropRule(2, 2, 60));
+                            put(EntityType.ENDERMAN, new DropRule(2, 2, 60));
+                            put(EntityType.GHAST, new DropRule(2, 2, 60));
+                            put(EntityType.HOGLIN, new DropRule(2, 2, 60));
+                            put(EntityType.PIGLIN, new DropRule(2, 2, 60));
+                            put(EntityType.PIGLIN_BRUTE, new DropRule(5, 2, 60));
+                            put(EntityType.PILLAGER, new DropRule(5, 2, 60));
+                            put(EntityType.SLIME, new DropRule(5, 2, 60));
+                            put(EntityType.SKELETON, new DropRule(5, 2, 60));
+                            put(EntityType.SPIDER, new DropRule(2, 2, 60));
+                            put(EntityType.STRIDER, new DropRule(10, 2, 60));
+                            put(EntityType.WITCH, new DropRule(5, 2, 60));
+                            put(EntityType.ZOMBIE, new DropRule(5, 2, 60));
+                        }}
+                )), this);
+
     }
 
     public static JavaPlugin getInstance() {
