@@ -1,4 +1,4 @@
-package devlaunchers.byteeconomy;
+package devlaunchers.byteeconomy.dropevents;
 
 public class DropRule {
     private int chance;
