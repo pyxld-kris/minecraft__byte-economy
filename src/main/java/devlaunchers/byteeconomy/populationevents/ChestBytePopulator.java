@@ -23,7 +23,7 @@ public class ChestBytePopulator implements Listener {
 
     @EventHandler
     public void onChunkPopulate(ChunkPopulateEvent e) {
-        System.out.println("POPULATING!!!!");
+        System.out.println("[ByteEconomy] [INFO] [onChunkPopulate] Populating...");
 
         BlockState[] tileEntities = e.getChunk().getTileEntities();
         for (BlockState state : tileEntities) {
