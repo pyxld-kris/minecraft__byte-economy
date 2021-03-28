@@ -5,6 +5,7 @@ A minecraft paper plugin that adds Byte$ to the game, and mechanics to work them
 
 ### Getting Byte$
   - Selling goods to other players through Villager Shopkeepers
+  - Exploring and looting from chunk generated chests (villages, shipwrecks, etc)
   - Mining Diamond and Emerald Ore will sometimes drop Byte$
   - Defeating various mobs will sometimes drop Byte$
 
