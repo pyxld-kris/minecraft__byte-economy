@@ -63,7 +63,6 @@ public final class ByteEconomy extends JavaPlugin {
                             put(EntityType.ZOMBIE, new DropRule(5, 3, 130));
                         }}
                 )), this);
-
     }
 
     public static JavaPlugin getInstance() {
