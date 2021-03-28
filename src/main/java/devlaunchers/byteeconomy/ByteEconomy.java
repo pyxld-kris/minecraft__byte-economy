@@ -24,13 +24,34 @@ public final class ByteEconomy extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        System.out.println("\n" +
+                " _______               __                      ________\n" +
+                "/       \\             /  |                    /        |\n" +
+                "$$$$$$$  | __    __  _$$ |_     ______        $$$$$$$$/   _______   ______   _______    ______   _____  ____   __    __\n" +
+                "$$ |__$$ |/  |  /  |/ $$   |   /      \\       $$ |__     /       | /      \\ /       \\  /      \\ /     \\/    \\ /  |  /  |\n" +
+                "$$    $$< $$ |  $$ |$$$$$$/   /$$$$$$  |      $$    |   /$$$$$$$/ /$$$$$$  |$$$$$$$  |/$$$$$$  |$$$$$$ $$$$  |$$ |  $$ |\n" +
+                "$$$$$$$  |$$ |  $$ |  $$ | __ $$    $$ |      $$$$$/    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |  $$ |\n" +
+                "$$ |__$$ |$$ \\__$$ |  $$ |/  |$$$$$$$$/       $$ |_____ $$ \\_____ $$ \\__$$ |$$ |  $$ |$$ \\__$$ |$$ | $$ | $$ |$$ \\__$$ |\n" +
+                "$$    $$/ $$    $$ |  $$  $$/ $$       |      $$       |$$       |$$    $$/ $$ |  $$ |$$    $$/ $$ | $$ | $$ |$$    $$ |\n" +
+                "$$$$$$$/   $$$$$$$ |   $$$$/   $$$$$$$/       $$$$$$$$/  $$$$$$$/  $$$$$$/  $$/   $$/  $$$$$$/  $$/  $$/  $$/  $$$$$$$ |\n" +
+                "          /  \\__$$ |                                                                                          /  \\__$$ |\n" +
+                "          $$    $$/                                                                                           $$    $$/\n" +
+                "           $$$$$$/                                                                                             $$$$$$/\n" +
+                "\n" +
+                "Version 0.0.1 - Release\n" +
+                "Created by DevLaunchers. For people, by people.");
+        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
         instance = this;
         itemManager = new ItemManager();
         recipeManager = new RecipeManager();
 
         this.getCommand("giveByte").setExecutor(new GiveByteCommand());
 
+        System.out.println("[ByteEconomy] [LOG] giveByte command loaded into memory.");
+
         getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
+
+        System.out.println("[ByteEconomy] [LOG] ChestBytePopulator loaded successfully!");
 
         // Detect breaking blocks and maybe drop byte$
         getServer().getPluginManager().registerEvents(new BlockBreakByteDropper(
@@ -63,6 +84,7 @@ public final class ByteEconomy extends JavaPlugin {
                             put(EntityType.ZOMBIE, new DropRule(5, 3, 130));
                         }}
                 )), this);
+        System.out.println("[ByteEconomy] [LOG] Loading complete. Now earn some awesome byte$!");
     }
 
     public static JavaPlugin getInstance() {
@@ -79,7 +101,7 @@ public final class ByteEconomy extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        System.out.println("[ByteEconomy] [LOG] Shutting down, Goodbye for now!");
     }
 }
 

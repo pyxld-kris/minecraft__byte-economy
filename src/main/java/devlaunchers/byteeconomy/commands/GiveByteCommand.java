@@ -27,6 +27,8 @@ public class GiveByteCommand implements CommandExecutor {
 
             // Give the player our items (comma-seperated list of all ItemStack)
             player.getInventory().addItem(byteItem);
+
+            System.out.println("[ByteEconomy] [LOG] Gave byte$! Amount: " + numBytes);
         }
 
         // If the player (or console) uses our command correct, we can return true
