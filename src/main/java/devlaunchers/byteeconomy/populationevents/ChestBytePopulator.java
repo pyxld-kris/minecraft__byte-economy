@@ -23,8 +23,6 @@ public class ChestBytePopulator implements Listener {
 
     @EventHandler
     public void onChunkPopulate(ChunkPopulateEvent e) {
-        System.out.println("[ByteEconomy] [INFO] [onChunkPopulate] Populating...");
-
         BlockState[] tileEntities = e.getChunk().getTileEntities();
         for (BlockState state : tileEntities) {
             if(state.getType() == Material.CHEST) {
@@ -32,7 +30,6 @@ public class ChestBytePopulator implements Listener {
                 int numBytes = getRandomByteAmount();
                 byteItemStack.setAmount(numBytes);
 
-                System.out.println("FOUND CHEST - INSERTING BYTES! "+numBytes);
                 Chest chest = (Chest)state;//.getBlock();
 
                 tryInsertIntoRandomSlot(chest.getBlockInventory(), byteItemStack);
