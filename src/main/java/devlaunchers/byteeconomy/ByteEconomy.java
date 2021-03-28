@@ -67,21 +67,21 @@ public final class ByteEconomy extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MobKillByteDropper(
                 new DropStrategy(
                         new HashMap<Object, DropRule>(){{
-                            put(EntityType.CAVE_SPIDER, new DropRule(5, 3, 130));
-                            put(EntityType.CREEPER, new DropRule(5, 3, 130));
-                            put(EntityType.DROWNED, new DropRule(2, 3, 130));
-                            put(EntityType.ENDERMAN, new DropRule(2, 3, 130));
-                            put(EntityType.GHAST, new DropRule(2, 3, 130));
-                            put(EntityType.HOGLIN, new DropRule(2, 3, 130));
-                            put(EntityType.PIGLIN, new DropRule(2, 3, 130));
-                            put(EntityType.PIGLIN_BRUTE, new DropRule(5, 3, 130));
-                            put(EntityType.PILLAGER, new DropRule(5, 3, 130));
-                            put(EntityType.SLIME, new DropRule(5, 3, 130));
-                            put(EntityType.SKELETON, new DropRule(5, 3, 130));
-                            put(EntityType.SPIDER, new DropRule(2, 3, 130));
-                            put(EntityType.STRIDER, new DropRule(10, 3, 130));
-                            put(EntityType.WITCH, new DropRule(5, 3, 130));
-                            put(EntityType.ZOMBIE, new DropRule(5, 3, 130));
+                            put(EntityType.CAVE_SPIDER, new DropRule(8, 3, 130));
+                            put(EntityType.CREEPER, new DropRule(8, 3, 130));
+                            put(EntityType.DROWNED, new DropRule(4, 3, 130));
+                            put(EntityType.ENDERMAN, new DropRule(10, 3, 130));
+                            put(EntityType.GHAST, new DropRule(20, 3, 130));
+                            put(EntityType.HOGLIN, new DropRule(4, 3, 130));
+                            put(EntityType.PIGLIN, new DropRule(4, 3, 130));
+                            put(EntityType.PIGLIN_BRUTE, new DropRule(8, 3, 130));
+                            put(EntityType.PILLAGER, new DropRule(8, 3, 130));
+                            put(EntityType.SLIME, new DropRule(8, 3, 130));
+                            put(EntityType.SKELETON, new DropRule(8, 3, 130));
+                            put(EntityType.SPIDER, new DropRule(4, 3, 130));
+                            put(EntityType.STRIDER, new DropRule(20, 3, 130));
+                            put(EntityType.WITCH, new DropRule(8, 3, 130));
+                            put(EntityType.ZOMBIE, new DropRule(8, 3, 130));
                         }}
                 )), this);
         System.out.println("[ByteEconomy] [LOG] Loading complete. Now earn some awesome byte$!");
