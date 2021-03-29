@@ -73,13 +73,13 @@ public final class ByteEconomy extends JavaPlugin {
                             put(EntityType.ENDERMAN, new DropRule(10, 3, 130));
                             put(EntityType.GHAST, new DropRule(20, 3, 130));
                             put(EntityType.HOGLIN, new DropRule(4, 3, 130));
+                            put(EntityType.PHANTOM, new DropRule(8, 3, 130));
                             put(EntityType.PIGLIN, new DropRule(4, 3, 130));
-                            put(EntityType.PIGLIN_BRUTE, new DropRule(8, 3, 130));
+                            put(EntityType.PIGLIN_BRUTE, new DropRule(10, 3, 130));
                             put(EntityType.PILLAGER, new DropRule(8, 3, 130));
                             put(EntityType.SLIME, new DropRule(8, 3, 130));
                             put(EntityType.SKELETON, new DropRule(8, 3, 130));
                             put(EntityType.SPIDER, new DropRule(4, 3, 130));
-                            put(EntityType.STRIDER, new DropRule(20, 3, 130));
                             put(EntityType.WITCH, new DropRule(8, 3, 130));
                             put(EntityType.ZOMBIE, new DropRule(8, 3, 130));
                         }}
@@ -146,6 +146,7 @@ public final class ByteEconomy extends JavaPlugin {
 
 // Guillermo: Farming Crops, Mining, Killing Mobs, Enchanting, Using Workbenches like Anvils?
 
+// TODO: Give people items when they first start in the server (Instructions, Byte$, Wood, etc.)
 // TODO: Random NPCs appear that have to be chased/found, which then give bytes
 // TODO: Advancements gives Byte$?
 // TODO: Detect different fortune levels
