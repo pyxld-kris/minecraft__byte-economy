@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class RecipeManager {
 
     public RecipeManager() {
-        initDiamondToByteRecipe();
+        //initDiamondToByteRecipe();
         initByteToDiamondRecipe();
     }
 
@@ -34,7 +34,7 @@ public class RecipeManager {
         ByteEconomy.getInstance().getServer().addRecipe(recipe);
     }
 
-
+    /*
     private void initDiamondToByteRecipe() {
         ItemStack craftingResult = ItemManager.getByteItem().clone();
         craftingResult.setAmount(9);
@@ -53,6 +53,7 @@ public class RecipeManager {
 
         System.out.println("Initialized Diamond to Byte Recipe!");
     }
+    */
 
     private void initByteToDiamondRecipe() {
         initRecipe(
