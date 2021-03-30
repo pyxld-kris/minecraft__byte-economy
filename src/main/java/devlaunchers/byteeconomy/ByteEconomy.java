@@ -40,8 +40,7 @@ public final class ByteEconomy extends JavaPlugin {
                 "\n" +
                 "Version 0.0.1 - Release\n" +
                 "Created by DevLaunchers. For people, by people.");
-        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
-        System.out.println("\n\nNew changes\n\n");
+        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");g
         instance = this;
         itemManager = new ItemManager();
         recipeManager = new RecipeManager();
