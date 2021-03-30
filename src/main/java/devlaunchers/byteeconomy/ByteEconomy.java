@@ -49,8 +49,7 @@ public final class ByteEconomy extends JavaPlugin {
 
         System.out.println("[ByteEconomy] [LOG] giveByte command loaded into memory.");
 
-        getServer().getPluginManager
-                ().registerEvents(new ChestBytePopulator(), this);
+        getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
 
         System.out.println("[ByteEconomy] [LOG] ChestBytePopulator loaded successfully!");
 
