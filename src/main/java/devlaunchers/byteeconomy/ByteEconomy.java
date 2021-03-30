@@ -40,7 +40,7 @@ public final class ByteEconomy extends JavaPlugin {
                 "\n" +
                 "Version 0.0.1 - Release\n" +
                 "Created by DevLaunchers. For people, by people.");
-        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");g
+        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
         instance = this;
         itemManager = new ItemManager();
         recipeManager = new RecipeManager();
@@ -49,7 +49,8 @@ public final class ByteEconomy extends JavaPlugin {
 
         System.out.println("[ByteEconomy] [LOG] giveByte command loaded into memory.");
 
-        getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
+        getServer().getPluginManager
+                ().registerEvents(new ChestBytePopulator(), this);
 
         System.out.println("[ByteEconomy] [LOG] ChestBytePopulator loaded successfully!");
 
