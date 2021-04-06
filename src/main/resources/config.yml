@@ -1,0 +1,78 @@
+byte:
+  item:
+    material: PAPER
+    displayName: §aByte$
+    customModel: 8
+    lore:
+    - §fMoney!
+  drops:
+    block_break:
+      DIAMOND_ORE:
+        chance: 50
+        protectionRadius: 1
+        protectionDuration: 1
+      EMERALD_ORE:
+        chance: 100
+        protectionRadius: 1
+        protectionDuration: 1
+    mob_kill:
+      CAVE_SPIDER:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      CREEPER:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      DROWNED:
+        chance: 4
+        protectionRadius: 3
+        protectionDuration: 130
+      ENDERMAN:
+        chance: 10
+        protectionRadius: 3
+        protectionDuration: 130
+      GHAST:
+        chance: 20
+        protectionRadius: 3
+        protectionDuration: 130
+      HOGLIN:
+        chance: 4
+        protectionRadius: 3
+        protectionDuration: 130
+      PHANTOM:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      PIGLIN:
+        chance: 4
+        protectionRadius: 3
+        protectionDuration: 130
+      PIGLIN_BRUTE:
+        chance: 10
+        protectionRadius: 3
+        protectionDuration: 130
+      PILLAGER:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      SLIME:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      SKELETON:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      SPIDER:
+        chance: 4
+        protectionRadius: 3
+        protectionDuration: 130
+      WITCH:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
+      ZOMBIE:
+        chance: 8
+        protectionRadius: 3
+        protectionDuration: 130
