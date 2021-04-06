@@ -3,24 +3,24 @@ package devlaunchers.byteeconomy.dropevents;
 import java.util.HashMap;
 
 public class DropStrategy {
-    HashMap<Object, DropRule> filterMap = new HashMap<Object, DropRule>();
+    HashMap<String, DropRule> filterMap = new HashMap<String, DropRule>();
 
     public DropStrategy() {}
-    public DropStrategy(HashMap filterMap) {
+    public DropStrategy(HashMap<String, DropRule> filterMap) {
         this.filterMap = filterMap;
     }
 
-    public DropRule getDropRuleByType(Object key) {
-        return filterMap.get(key);
+    public DropRule getDropRuleByType(Enum<?> key) {
+        return filterMap.get(key.toString());
     }
 
-    public DropStrategy addDropChanceEntry(Object filterType, DropRule dropRule) {
-        filterMap.put(filterType, dropRule);
+    public DropStrategy addDropChanceEntry(Enum<?> filterType, DropRule dropRule) {
+        filterMap.put(filterType.toString(), dropRule);
         return this;
     }
 
-    public boolean checkShouldDrop(Object filter) {
-        DropRule dropRule = filterMap.get(filter);
+    public boolean checkShouldDrop(Enum<?> filter) {
+        DropRule dropRule = filterMap.get(filter.toString());
         if (dropRule != null) {
             int chance = dropRule.getChance();
             if (Math.random() * 100 < chance) {

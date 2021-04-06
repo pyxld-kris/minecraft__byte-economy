@@ -1,7 +1,7 @@
 package devlaunchers.byteeconomy;
 
-
 import devlaunchers.byteeconomy.commands.GiveByteCommand;
+import devlaunchers.byteeconomy.config.ByteEconomyConfig;
 import devlaunchers.byteeconomy.dropevents.BlockBreakByteDropper;
 import devlaunchers.byteeconomy.dropevents.DropRule;
 import devlaunchers.byteeconomy.dropevents.DropStrategy;
@@ -15,77 +15,50 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 
-
 public final class ByteEconomy extends JavaPlugin {
 
-    private static JavaPlugin instance;
-    private static ItemManager itemManager;
-    private static RecipeManager recipeManager;
+	private static JavaPlugin instance;
+	private static ItemManager itemManager;
+	private static RecipeManager recipeManager;
+	private static ByteEconomyConfig config;
 
-    @Override
-    public void onEnable() {
-        System.out.println("\n" +
-                " _______               __                      ________\n" +
-                "/       \\             /  |                    /        |\n" +
-                "$$$$$$$  | __    __  _$$ |_     ______        $$$$$$$$/   _______   ______   _______    ______   _____  ____   __    __\n" +
-                "$$ |__$$ |/  |  /  |/ $$   |   /      \\       $$ |__     /       | /      \\ /       \\  /      \\ /     \\/    \\ /  |  /  |\n" +
-                "$$    $$< $$ |  $$ |$$$$$$/   /$$$$$$  |      $$    |   /$$$$$$$/ /$$$$$$  |$$$$$$$  |/$$$$$$  |$$$$$$ $$$$  |$$ |  $$ |\n" +
-                "$$$$$$$  |$$ |  $$ |  $$ | __ $$    $$ |      $$$$$/    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |  $$ |\n" +
-                "$$ |__$$ |$$ \\__$$ |  $$ |/  |$$$$$$$$/       $$ |_____ $$ \\_____ $$ \\__$$ |$$ |  $$ |$$ \\__$$ |$$ | $$ | $$ |$$ \\__$$ |\n" +
-                "$$    $$/ $$    $$ |  $$  $$/ $$       |      $$       |$$       |$$    $$/ $$ |  $$ |$$    $$/ $$ | $$ | $$ |$$    $$ |\n" +
-                "$$$$$$$/   $$$$$$$ |   $$$$/   $$$$$$$/       $$$$$$$$/  $$$$$$$/  $$$$$$/  $$/   $$/  $$$$$$/  $$/  $$/  $$/  $$$$$$$ |\n" +
-                "          /  \\__$$ |                                                                                          /  \\__$$ |\n" +
-                "          $$    $$/                                                                                           $$    $$/\n" +
-                "           $$$$$$/                                                                                             $$$$$$/\n" +
-                "\n" +
-                "Version 0.0.1 - Release\n" +
-                "Created by DevLaunchers. For people, by people.");
-        System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
-        instance = this;
-        itemManager = new ItemManager();
-        recipeManager = new RecipeManager();
+	@Override
+	public void onEnable() {
+		System.out.println("\n" + " _______               __                      ________\n"
+				+ "/       \\             /  |                    /        |\n"
+				+ "$$$$$$$  | __    __  _$$ |_     ______        $$$$$$$$/   _______   ______   _______    ______   _____  ____   __    __\n"
+				+ "$$ |__$$ |/  |  /  |/ $$   |   /      \\       $$ |__     /       | /      \\ /       \\  /      \\ /     \\/    \\ /  |  /  |\n"
+				+ "$$    $$< $$ |  $$ |$$$$$$/   /$$$$$$  |      $$    |   /$$$$$$$/ /$$$$$$  |$$$$$$$  |/$$$$$$  |$$$$$$ $$$$  |$$ |  $$ |\n"
+				+ "$$$$$$$  |$$ |  $$ |  $$ | __ $$    $$ |      $$$$$/    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |  $$ |\n"
+				+ "$$ |__$$ |$$ \\__$$ |  $$ |/  |$$$$$$$$/       $$ |_____ $$ \\_____ $$ \\__$$ |$$ |  $$ |$$ \\__$$ |$$ | $$ | $$ |$$ \\__$$ |\n"
+				+ "$$    $$/ $$    $$ |  $$  $$/ $$       |      $$       |$$       |$$    $$/ $$ |  $$ |$$    $$/ $$ | $$ | $$ |$$    $$ |\n"
+				+ "$$$$$$$/   $$$$$$$ |   $$$$/   $$$$$$$/       $$$$$$$$/  $$$$$$$/  $$$$$$/  $$/   $$/  $$$$$$/  $$/  $$/  $$/  $$$$$$$ |\n"
+				+ "          /  \\__$$ |                                                                                          /  \\__$$ |\n"
+				+ "          $$    $$/                                                                                           $$    $$/\n"
+				+ "           $$$$$$/                                                                                             $$$$$$/\n"
+				+ "\n" + "Version 0.0.1 - Release\n" + "Created by DevLaunchers. For people, by people.");
+		System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
+		instance = this;
+		itemManager = new ItemManager();
+		recipeManager = new RecipeManager();
+		config = ByteEconomyConfig.getInstance();
 
-        this.getCommand("giveByte").setExecutor(new GiveByteCommand());
+		this.getCommand("giveByte").setExecutor(new GiveByteCommand());
 
-        System.out.println("[ByteEconomy] [LOG] giveByte command loaded into memory.");
+		System.out.println("[ByteEconomy] [LOG] giveByte command loaded into memory.");
 
-        getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
+		getServer().getPluginManager().registerEvents(new ChestBytePopulator(), this);
 
-        System.out.println("[ByteEconomy] [LOG] ChestBytePopulator loaded successfully!");
+		System.out.println("[ByteEconomy] [LOG] ChestBytePopulator loaded successfully!");
 
-        // Detect breaking blocks and maybe drop byte$
-        getServer().getPluginManager().registerEvents(new BlockBreakByteDropper(
-                new DropStrategy(
-                        new HashMap<Object, DropRule>(){{
-                                put(Material.DIAMOND_ORE, new DropRule(50, 1, 60));
-                                put(Material.EMERALD_ORE, new DropRule(100, 1, 60));
-                    }}
-                )),
-                this);
+		// Detect breaking blocks and maybe drop byte$
+		getServer().getPluginManager().registerEvents(new BlockBreakByteDropper(config.getDropStrategy("block_break")),
+				this);
 
-        // Detect killing mobs and maybe drop byte$
-        getServer().getPluginManager().registerEvents(new MobKillByteDropper(
-                new DropStrategy(
-                        new HashMap<Object, DropRule>(){{
-                            put(EntityType.CAVE_SPIDER, new DropRule(8, 3, 130));
-                            put(EntityType.CREEPER, new DropRule(8, 3, 130));
-                            put(EntityType.DROWNED, new DropRule(4, 3, 130));
-                            put(EntityType.ENDERMAN, new DropRule(10, 3, 130));
-                            put(EntityType.GHAST, new DropRule(20, 3, 130));
-                            put(EntityType.HOGLIN, new DropRule(4, 3, 130));
-                            put(EntityType.PHANTOM, new DropRule(8, 3, 130));
-                            put(EntityType.PIGLIN, new DropRule(4, 3, 130));
-                            put(EntityType.PIGLIN_BRUTE, new DropRule(10, 3, 130));
-                            put(EntityType.PILLAGER, new DropRule(8, 3, 130));
-                            put(EntityType.SLIME, new DropRule(8, 3, 130));
-                            put(EntityType.SKELETON, new DropRule(8, 3, 130));
-                            put(EntityType.SPIDER, new DropRule(4, 3, 130));
-                            put(EntityType.WITCH, new DropRule(8, 3, 130));
-                            put(EntityType.ZOMBIE, new DropRule(8, 3, 130));
-                        }}
-                )), this);
-        System.out.println("[ByteEconomy] [LOG] Loading complete. Now earn some awesome byte$!");
-    }
+		// Detect killing mobs and maybe drop byte$
+		getServer().getPluginManager().registerEvents(new MobKillByteDropper(config.getDropStrategy("mob_kill")), this);
+		System.out.println("[ByteEconomy] [LOG] Loading complete. Now earn some awesome byte$!");
+	}
 
     public static JavaPlugin getInstance() {
         return instance;
