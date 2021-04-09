@@ -5,7 +5,7 @@ byte:
     customModel: 8
     lore:
     - §fMoney!
-  drops:
+  drop_strategies:
     block_break:
       DIAMOND_ORE:
         chance: 50

@@ -30,36 +30,11 @@ public final class ByteEconomyConfig {
 		byteEconomy.saveDefaultConfig();
 	}
 
-	public DropStrategy getDropStrategy(String event) {
-		HashMap<String, DropRule> drops = new HashMap<>();
-
-		FileConfiguration config = byteEconomy.getConfig();
-
-		if (!config.contains("byte.drops." + event)) {
-			return new DropStrategy();
+	public static ByteEconomyConfig getInstance() {
+		if (instance == null) {
+			instance = new ByteEconomyConfig(ByteEconomy.getInstance());
 		}
-
-		ConfigurationSection eventDropsSection = config.getConfigurationSection("byte.drops." + event);
-
-		Set<String> keys = eventDropsSection.getKeys(false);
-
-		for (String key : keys) {
-			ConfigurationSection cs = eventDropsSection.getConfigurationSection(key);
-
-			if (!cs.getKeys(false).containsAll(Arrays.asList("chance", "protectionRadius", "protectionDuration"))) {
-				byteEconomy.getLogger().severe("Misconfigured Drop of event '" + event + "' with key '" + key
-						+ "'. Requires 'chance', 'protectionRadius' and 'protectionDuration'!");
-				continue;
-			}
-
-			int chance = cs.getInt("chance");
-			int protectionRadius = cs.getInt("protectionRadius");
-			int protectionDuration = cs.getInt("protectionDuration");
-
-			drops.put(key, new DropRule(chance, protectionRadius, protectionDuration));
-		}
-
-		return new DropStrategy(drops);
+		return instance;
 	}
 
 	public ItemStack getByteItem() {
@@ -95,11 +70,35 @@ public final class ByteEconomyConfig {
 		return item;
 	}
 
-	public static ByteEconomyConfig getInstance() {
-		if (instance == null) {
-			instance = new ByteEconomyConfig(ByteEconomy.getInstance());
-		}
-		return instance;
-	}
+	public DropStrategy getDropStrategy(String event) {
+		HashMap<String, DropRule> drops = new HashMap<>();
 
+		FileConfiguration config = byteEconomy.getConfig();
+
+		if (!config.contains("byte.drop_strategies." + event)) {
+			return new DropStrategy();
+		}
+
+		ConfigurationSection eventDropsSection = config.getConfigurationSection("byte.drop_strategies." + event);
+
+		Set<String> keys = eventDropsSection.getKeys(false);
+
+		for (String key : keys) {
+			ConfigurationSection cs = eventDropsSection.getConfigurationSection(key);
+
+			if (!cs.getKeys(false).containsAll(Arrays.asList("chance", "protectionRadius", "protectionDuration"))) {
+				byteEconomy.getLogger().severe("Misconfigured Drop of event '" + event + "' with key '" + key
+						+ "'. Requires 'chance', 'protectionRadius' and 'protectionDuration'!");
+				continue;
+			}
+
+			int chance = cs.getInt("chance");
+			int protectionRadius = cs.getInt("protectionRadius");
+			int protectionDuration = cs.getInt("protectionDuration");
+
+			drops.put(key, new DropRule(chance, protectionRadius, protectionDuration));
+		}
+
+		return new DropStrategy(drops);
+	}
 }
