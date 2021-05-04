@@ -2,6 +2,9 @@
 package devlaunchers.byteeconomy.populationevents;
 
 import devlaunchers.byteeconomy.ByteEconomy;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.items.ItemRepository;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.BlockState;
@@ -26,7 +29,7 @@ public class ChestBytePopulator implements Listener {
         BlockState[] tileEntities = e.getChunk().getTileEntities();
         for (BlockState state : tileEntities) {
             if(state.getType() == Material.CHEST) {
-                ItemStack byteItemStack = ByteEconomy.getItemUtil().getByteItem().clone();
+                ItemStack byteItemStack = ItemRepository.getItem(DevLauncherItem.ECONOMY_BYTE_ITEM).clone();
                 int numBytes = getRandomByteAmount();
                 byteItemStack.setAmount(numBytes);
 

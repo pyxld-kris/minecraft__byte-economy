@@ -2,6 +2,8 @@ package devlaunchers.byteeconomy.dropevents;
 
 import devlaunchers.byteeconomy.ByteEconomy;
 import devlaunchers.byteeconomy.dropevents.monitoring.ByteDropMonitor;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.items.ItemRepository;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -30,7 +32,7 @@ public class BlockBreakByteDropper implements Listener {
 
         DropRule dropRule = dropStrategy.getDropRuleByType(material);
         if (dropStrategy.checkShouldDrop(block.getType()) && byteDropMonitor.canDrop(location, dropRule) && !isHoldingSilkTouch(player)) {
-            ItemStack byteItem = ByteEconomy.getItemUtil().getByteItem().clone();
+            ItemStack byteItem = ItemRepository.getItem(DevLauncherItem.ECONOMY_BYTE_ITEM).clone();
             if (isHoldingFortune(player)) byteItem.setAmount(2);
             location.getWorld().dropItemNaturally(location, byteItem);
 

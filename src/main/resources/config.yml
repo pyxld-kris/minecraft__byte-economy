@@ -1,10 +1,13 @@
 byte:
   item:
     material: PAPER
-    displayName: §aByte$
-    customModel: 8
     lore:
-    - §fMoney!
+      - §fMoney!
+    meta:
+      displayName: §aByte$
+      customModel: 8
+      flags:
+        - "HIDE_ENCHANTS"
   drop_strategies:
     block_break:
       DIAMOND_ORE:

@@ -2,6 +2,9 @@ package devlaunchers.byteeconomy.dropevents;
 
 import devlaunchers.byteeconomy.ByteEconomy;
 import devlaunchers.byteeconomy.dropevents.monitoring.ByteDropMonitor;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.items.ItemRepository;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -31,7 +34,7 @@ public class MobKillByteDropper implements Listener {
         if (killer instanceof Player &&
             dropStrategy.checkShouldDrop(entity.getType()) &&
             byteDropMonitor.canDrop(location, dropRule)) {
-                ItemStack byteItem = ByteEconomy.getItemUtil().getByteItem().clone();
+                ItemStack byteItem = ItemRepository.getItem(DevLauncherItem.ECONOMY_BYTE_ITEM).clone();
                 location.getWorld().dropItemNaturally(location, byteItem);
 
                 byteDropMonitor.byteDropped(location, dropRule); // Log this byte drop to prevent abuse

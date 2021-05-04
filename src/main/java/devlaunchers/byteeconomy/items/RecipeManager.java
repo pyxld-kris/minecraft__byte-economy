@@ -1,6 +1,9 @@
 package devlaunchers.byteeconomy.items;
 
 import devlaunchers.byteeconomy.ByteEconomy;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.items.ItemRepository;
+
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -65,7 +68,7 @@ public class RecipeManager {
                         "BBB"
                 },
                 new HashMap<String, ItemStack>() {{                     // Key value pair corresponding to shape entries
-                    put("B", ItemManager.getByteItem());
+                    put("B", ItemRepository.getItem(DevLauncherItem.ECONOMY_BYTE_ITEM));
                 }}
         );
 
