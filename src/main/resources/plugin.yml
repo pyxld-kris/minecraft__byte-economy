@@ -2,6 +2,8 @@ name: ByteEconomy
 version: ${project.version}
 main: devlaunchers.byteeconomy.ByteEconomy
 api-version: 1.16
+load: startup
+depend: [DevLaunchersLibrary]
 commands:
   giveByte:
     description: Gives you bytes
