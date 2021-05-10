@@ -41,6 +41,8 @@ public final class ByteEconomy extends DevLaunchersPlugin {
 		System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
 		instance = this;
 		
+		ByteEconomyLibrary.getInstance();
+		
 		registerItem(DevLauncherItem.ECONOMY_BYTE_ITEM, getConfig().getItemStack("byte.item"));
 		
 		recipeManager = new RecipeManager();
