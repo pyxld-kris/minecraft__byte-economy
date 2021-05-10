@@ -1,6 +1,9 @@
 package devlaunchers.byteeconomy.commands;
 
 import devlaunchers.byteeconomy.ByteEconomy;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.items.ItemRepository;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,7 +19,7 @@ public class GiveByteCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             // Create a new ItemStack (type: diamond)
-            ItemStack byteItem = ByteEconomy.getItemUtil().getByteItem().clone();
+            ItemStack byteItem = ItemRepository.getItem(DevLauncherItem.ECONOMY_BYTE_ITEM).clone();
 
             int numBytes = 1;
             if (args[0] != null)

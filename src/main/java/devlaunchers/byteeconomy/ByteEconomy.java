@@ -6,19 +6,20 @@ import devlaunchers.byteeconomy.dropevents.BlockBreakByteDropper;
 import devlaunchers.byteeconomy.dropevents.DropRule;
 import devlaunchers.byteeconomy.dropevents.DropStrategy;
 import devlaunchers.byteeconomy.dropevents.MobKillByteDropper;
-import devlaunchers.byteeconomy.items.ItemManager;
 import devlaunchers.byteeconomy.items.RecipeManager;
 import devlaunchers.byteeconomy.populationevents.ChestBytePopulator;
+import devlaunchers.items.DevLauncherItem;
+import devlaunchers.plugin.DevLaunchersPlugin;
+
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 
-public final class ByteEconomy extends JavaPlugin {
+public final class ByteEconomy extends DevLaunchersPlugin {
 
-	private static JavaPlugin instance;
-	private static ItemManager itemManager;
+	private static DevLaunchersPlugin instance;
 	private static RecipeManager recipeManager;
 	private static ByteEconomyConfig config;
 
@@ -39,7 +40,9 @@ public final class ByteEconomy extends JavaPlugin {
 				+ "\n" + "Version 0.0.1 - Release\n" + "Created by DevLaunchers. For people, by people.");
 		System.out.println("[ByteEconomy] [LOG] Plugin initializing..");
 		instance = this;
-		itemManager = new ItemManager();
+		
+		registerItem(DevLauncherItem.ECONOMY_BYTE_ITEM, getConfig().getItemStack("byte.item"));
+		
 		recipeManager = new RecipeManager();
 		config = ByteEconomyConfig.getInstance();
 
@@ -60,12 +63,8 @@ public final class ByteEconomy extends JavaPlugin {
 		System.out.println("[ByteEconomy] [LOG] Loading complete. Now earn some awesome byte$!");
 	}
 
-    public static JavaPlugin getInstance() {
+    public static DevLaunchersPlugin getInstance() {
         return instance;
-    }
-
-    public static ItemManager getItemUtil() {
-        return itemManager;
     }
 
     public static RecipeManager getRecipeManager() {
