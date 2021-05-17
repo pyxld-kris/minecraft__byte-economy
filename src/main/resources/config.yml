@@ -5,7 +5,7 @@ byte:
       - §fMoney!
     meta:
       displayName: §aByte$
-      customModel: 8
+      modelData: 8
       flags:
         - "HIDE_ENCHANTS"
   drop_strategies:
